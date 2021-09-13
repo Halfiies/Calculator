@@ -1,0 +1,17 @@
+main {
+  width: 600px;
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 15px; 
+  justify-content: space-between;
+  
+}
+
+.Box {
+  grid-column: 1/span 4;
+}
+
+.button {
+  height: 50px;
+  width: 50px;
+}
