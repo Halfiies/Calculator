@@ -1,29 +1,5 @@
-// accept an input
-//text field + input buttons
-// if answer box is empty, copy input to answer on operator click 
-// const answerBox = " ";
-//answerBox = document.getElementsByClassName("answer").value;
 
-//function boxUpdate() {
-//  console.log(answerBox)};
-
-//if answer box is full, perform operation
-//const equals = document.getElementsByClassName("equals");
-
-//equals.addEventListener("click", test())
-
-
-//check for numbers or symbols
-// on click read inner html
-// on number click, place number into input box
-//document.querySelectorAll("number").addEventlistener("click", updateNumber);
-//function updateNumber() => {}
-
-// 
-
-//perform basic maths
-//return answer
-
+const operators = ("+","-","*","/")
 const numberButtons = document.querySelectorAll(".number")
 const operationButtons = document.querySelectorAll(".operator")
 const equalsButton = document.querySelector(".equals")
@@ -39,17 +15,100 @@ for (let i=0; i< numberButtons.length;i++){
 };
 for (let i=0; i<operationButtons.length; i++){
   operationButtons[i].addEventListener("click", function () {
-    input += operationButtons[i].innerText;
-    document.querySelector(".input").value = input;
+    if (input.includes("+")){
+      const mathsArr = input.split("+");
+      const sum = (previousValue, currentValue) => (parseFloat(previousValue) + parseFloat(currentValue));
+      input = mathsArr.reduce(sum);
+      input += operationButtons[i].innerText;
+    }
+    else if (input.includes("-")){
+      const mathsArr = input.split("-");
+      const sum = (previousValue, currentValue) => (parseFloat(previousValue) - parseFloat(currentValue));
+      input = mathsArr.reduce(sum);
+      input += operationButtons[i].innerText;
+    }
+    else if (input.includes("*")){
+      const mathsArr = input.split("*");
+      const sum = (previousValue, currentValue) => (parseFloat(previousValue) * parseFloat(currentValue));
+      input = mathsArr.reduce(sum);
+      input += operationButtons[i].innerText;
+    }
+    else if (input.includes("/")){
+      const mathsArr = input.split("/");
+      const sum = (previousValue, currentValue) => (parseFloat(previousValue) / parseFloat(currentValue));
+      input = mathsArr.reduce(sum);
+      input += operationButtons[i].innerText;
+    }
+    else if (input.includes("^")){
+      const mathsArr = input.split("^");
+      const sum = (previousValue, currentValue) => (parseFloat(previousValue)**parseFloat(currentValue));
+      input = mathsArr.reduce(sum);
+      input += operationButtons[i].innerText;
+    }
+    else {
+      input += operationButtons[i].innerText;
+      document.querySelector(".input").value = input;
+    }
   });
+  
+equalsButton.addEventListener("click", function(){
+  if (input.includes("+")){
+    const mathsArr = input.split("+");
+    const sum = (previousValue, currentValue) => (parseFloat(previousValue) + parseFloat(currentValue));
+    answer = mathsArr.reduce(sum);
+    document.querySelector(".answer").value = answer;
+    input = "";
+    document.querySelector(".input").value = input;
+  }
+  else if (input.includes("-")){
+    const mathsArr = input.split("-");
+    const sum = (previousValue, currentValue) => (parseFloat(previousValue) - parseFloat(currentValue));
+    answer = mathsArr.reduce(sum);
+    document.querySelector(".answer").value = answer;
+    input = "";
+    document.querySelector(".input").value = input;
+  }
+  else if (input.includes("*")){
+    const mathsArr = input.split("*");
+    const sum = (previousValue, currentValue) => (parseFloat(previousValue) * parseFloat(currentValue));
+    answer = mathsArr.reduce(sum);
+    document.querySelector(".answer").value = answer;
+    input = "";
+    document.querySelector(".input").value = input;
+  }
+  else if (input.includes("/")){
+    const mathsArr = input.split("/");
+    const sum = (previousValue, currentValue) => (parseFloat(previousValue) / parseFloat(currentValue));
+    answer = mathsArr.reduce(sum);
+    document.querySelector(".answer").value = answer;
+    input = "";
+    document.querySelector(".input").value = input;
+  }
+  else if (input.includes("^")){
+    const mathsArr = input.split("^");
+    const sum = (previousValue, currentValue) => (parseFloat(previousValue)**parseFloat(currentValue));
+    answer = mathsArr.reduce(sum);
+    document.querySelector(".answer").value = answer;
+    input = "";
+    document.querySelector(".input").value = input;
+   }
+  else {
+    answer = input
+    input = ""
+  }
+});
+
 };
 deleteButton.addEventListener( "click", function () {
  input= input.slice(0,-1);
  document.querySelector(".input").value = input;
+ input="";
 });
 
-
-equalsButton.addEventListener("click", function(){
-  document.querySelector(".answer").value = eval(input);
+clearButton.addEventListener("click", function(){
+  answer = ""
+  input = ""
+  document.querySelector(".answer").value = "";
   document.querySelector(".input").value = "";
 });
+

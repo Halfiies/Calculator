@@ -1,17 +1,39 @@
-main {
+.calculator {
+  margin: auto;
   width: 600px;
   display:grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 15px; 
-  justify-content: space-between;
-  
+  justify-content: space-evenly;
+  background-color: #40434e;
+  padding-bottom: 30px;
+  border-radius: 5px;
 }
 
 .Box {
   grid-column: 1/span 4;
 }
-
+.buttons{
+  width: 550px;
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 15px; 
+  justify-content: center;
+  margin:auto;
+ 
+}
 .button {
+  display: flex;
+  justify-content: center;
   height: 50px;
   width: 50px;
+  align-items: center;
+  justify-self: center;
+  background-color: #ADA0A6;
+}
+textarea{
+  margin: 10px;
+  border:10px;
+  border: #A09299;
+  border-radius: 3px;
 }
