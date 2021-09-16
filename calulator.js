@@ -1,5 +1,5 @@
 
-const operators = ("+","-","*","/")
+const operators = ("+","-","*","/","^")
 const numberButtons = document.querySelectorAll(".number")
 const operationButtons = document.querySelectorAll(".operator")
 const equalsButton = document.querySelector(".equals")
